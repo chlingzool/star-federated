@@ -1,3 +1,4 @@
+res://node/world/module
 res://node/res/tree
 res://script/gds
 res://node/ui/message
@@ -5,7 +6,6 @@ res://node/ui
 res://node/start
 res://node/world
 res://script/global
-res://node/world/module
 res://assrt/icon
 res://assrt/theme/button
 res://assrt/theme

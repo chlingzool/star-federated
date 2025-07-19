@@ -15,3 +15,6 @@ res://node/res/tree/tree.tscn
 res://node/world/module/cb_main.gd
 res://node/res/tree/tree.gd
 res://script/gds/world_builder.gd
+res://node/world/module/cb_water.gd
+res://node/world/module/cb_water.tscn
+res://script/gds/planet_ecosystem.gd

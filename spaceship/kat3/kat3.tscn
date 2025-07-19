@@ -148,7 +148,7 @@ floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_o6jdi")
-speed = 500000.0
+speed = 5e+06
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)

@@ -34,7 +34,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 2
 bbcode_enabled = true
-text = "	0.0.8.6 beta1 [b][color=red]4A[/color][/b]	"
+text = "	0.0.8.12 beta1 [b][color=red]4A[/color][/b]	"
 fit_content = true
 autowrap_mode = 0
 shortcut_keys_enabled = false

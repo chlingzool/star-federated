@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw5oytuwygig1"]
+
+[ext_resource type="Script" uid="uid://2k88bpy70qsg" path="res://node/world/module/cb_water.gd" id="1_4t7py"]
+
+[node name="water" type="StaticBody2D"]
+script = ExtResource("1_4t7py")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.629029, 0.923955, 1, 1)

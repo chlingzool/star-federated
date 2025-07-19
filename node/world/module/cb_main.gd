@@ -17,9 +17,9 @@ extends StaticBody2D
 var gravity: float = 0.0  # 重力
 var mass: float = 0.0  # 质量
 
-var visualization := false #可视化
+@export var visualization := false #可视化
 
-# 森林分布参数
+@export_subgroup("forest") # 森林分布参数
 var tree_scene: PackedScene = preload("res://node/res/tree/tree.tscn") # 用于实例化树的场景
 @export var forest_ratio: float = 0.2 # 森林占表面比例
 @export var base_tree_density: float = 0.0022 # 每单位周长的树密度（可调节）
@@ -30,6 +30,14 @@ var tree_scene: PackedScene = preload("res://node/res/tree/tree.tscn") # 用于�
 @export var forest_patch_ratio: float = 0.1 # 每个斑块占周长比例
 @export var base_tree_spacing: float = 80.0 # 最小树间距
 
+#@export_subgroup("water") # 水分布参数
+#var water_scene: PackedScene = preload("res://node/world/module/cb_water.tscn") # 用于实例化水的场景
+#@export var water_patch_count: int = 2 # 水域斑块数量
+#@export var water_patch_ratio: float = 0.4 # 每个水域占平原比例
+#@export var base_water_density: float = 0.0022 # 每单位周长的水密度（可调节）
+#@export var water_offset: float = 120.0 # 水浮在表面距离
+#@export var water_color: Color = Color(0.5, 0.8, 1.0) # 水域颜色
+#@export var base_water_spacing: float = 80.0 # 最小水域间距
 
 func _ready() -> void:
 	found()
@@ -53,7 +61,7 @@ func found() -> void:
 		"tp":
 			var _color = [Color.FOREST_GREEN, Color.GREEN_YELLOW, Color.LIME_GREEN, Color.DARK_SEA_GREEN][randi() % 4]
 			color = _color
-			spawn_forest_patches_and_plain()
+			spawn_ecosystem()
 		"gas":
 			var _color = [Color.GOLD - Color(0, 0, 0, 0.5), Color.DARK_SALMON - Color(0, 0, 0, 0.5), Color.ORANGE - Color(0, 0, 0, 0.5), Color.KHAKI - Color(0, 0, 0, 0.5)][randi() % 4]
 			color = _color
@@ -65,13 +73,6 @@ func found() -> void:
 		"rock":
 			var _color = [Color.CHOCOLATE, Color.DARK_GOLDENROD, Color.GOLDENROD, Color.PERU, Color.FIREBRICK][randi() % 5]
 			color = _color
-		"water":
-			var _color = [Color.AQUA, Color.LIGHT_BLUE, Color.DARK_TURQUOISE][randi() % 3]
-			color = _color
-			# 水态行星实体缩小一半
-			$polygon.scale = Vector2(0.5, 0.5)
-			$CollisionPolygon.scale = Vector2(0.5, 0.5)
-			$LightOccluder.scale = Vector2(0.5, 0.5)
 	$polygon.color = color
 
 func updata_for_noise(noise: FastNoiseLite):
@@ -92,7 +93,7 @@ func updata_for_noise(noise: FastNoiseLite):
 	collision_polygon.set("polygon", points)
 	light_occluder.occluder.set_polygon(points)
 
-func spawn_forest_patches_and_plain():
+func spawn_ecosystem() -> void:
 	if not tree_scene or polygon.polygon.size() < 2:
 		return
 	# 清理旧树和平原/森林标记
