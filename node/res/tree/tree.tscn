@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://nwxtm840qrky"]
+
+[ext_resource type="Script" uid="uid://dwhl3y4e1hwuy" path="res://node/res/tree/tree.gd" id="1_fueac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fueac"]
+size = Vector2(102, 120)
+
+[node name="node" type="Node2D"]
+script = ExtResource("1_fueac")
+seed_ = 4042097249
+
+[node name="area-tree" type="Area2D" parent="."]
+
+[node name="cs" type="CollisionShape2D" parent="area-tree"]
+position = Vector2(0, 60)
+shape = SubResource("RectangleShape2D_fueac")
+
+[node name="tap" type="Label" parent="."]
+visible = false
+offset_left = -56.0
+offset_top = -84.0
+offset_right = 63.0
+offset_bottom = -68.0
+text = "cut down [F]"
+
+[connection signal="tree_tapped" from="." to="." method="_on_tree_tapped"]
+[connection signal="area_entered" from="area-tree" to="." method="_on_areatree_area_entered"]
+[connection signal="area_exited" from="area-tree" to="." method="_on_areatree_area_exited"]

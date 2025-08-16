@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwdsnhos7ihsh"]
+
+[ext_resource type="Texture2D" uid="uid://dklgtbjfkwblt" path="res://assrt/img/a-space-man.svg" id="1_66qbe"]
+[ext_resource type="Script" uid="uid://0fiwxig6pxo4" path="res://node/world/module/playerbody.gd" id="1_i33hl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i33hl"]
+rough = true
+bounce = 0.1
+absorbent = true
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1kuhd"]
+resource_local_to_scene = true
+polygon = PackedVector2Array(-10, -52, -10, 52, 29, 52, 29, -52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkki8"]
+size = Vector2(39, 105)
+
+[node name="player" type="RigidBody2D"]
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_i33hl")
+script = ExtResource("1_i33hl")
+
+[node name="collision" type="CollisionPolygon2D" parent="."]
+position = Vector2(9, -0.5)
+polygon = PackedVector2Array(-17, -51.5, -19, -49.5, -19, -31.5, -37, -31.5, -39, -29.5, -39, 30.5, -37, 32.5, -19, 32.5, -19, 50.5, -17, 52.5, 18, 52.5, 20, 50.5, 20, -49.5, 18, -51.5)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_1kuhd")
+
+[node name="area-player" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="area-player"]
+position = Vector2(9.5, -0.5)
+shape = SubResource("RectangleShape2D_lkki8")
+
+[node name="skeleton" type="Skeleton2D" parent="."]
+
+[node name="sprite" type="Sprite2D" parent="skeleton"]
+texture = ExtResource("1_66qbe")
+
+[node name="RayCast" type="RayCast2D" parent="."]
+position = Vector2(9, 0)
+target_position = Vector2(0, 62)
+hit_from_inside = true

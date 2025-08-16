@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcijaskjp3a32"]
+
+[ext_resource type="PackedScene" uid="uid://dwdsnhos7ihsh" path="res://node/world/module/playerbody.tscn" id="1_5yb3h"]
+[ext_resource type="PackedScene" uid="uid://dvijcba0iuo2r" path="res://node/world/world.tscn" id="1_p558b"]
+[ext_resource type="PackedScene" uid="uid://0au5ino34exx" path="res://node/ui/main_ui.tscn" id="2_dnksk"]
+[ext_resource type="Script" uid="uid://c4ab0sdhuhsrr" path="res://script/gds/self_camera.gd" id="3_cuwna"]
+[ext_resource type="PackedScene" uid="uid://bfnjvm15np73b" path="res://spaceship/kat3/kat3.tscn" id="3_hmjnl"]
+[ext_resource type="PackedScene" uid="uid://bf116krwaoncs" path="res://node/ui/messages.tscn" id="6_rbnps"]
+
+[node name="node" type="Node"]
+
+[node name="back" type="Node" parent="."]
+
+[node name="root" type="Node" parent="."]
+
+[node name="node" parent="root" instance=ExtResource("1_p558b")]
+
+[node name="res_root" type="Node2D" parent="root" groups=["res"]]
+unique_name_in_owner = true
+
+[node name="players" type="Node" parent="."]
+
+[node name="self" parent="players" instance=ExtResource("1_5yb3h")]
+position = Vector2(-298, 71)
+
+[node name="camera" type="Camera2D" parent="players/self"]
+process_callback = 0
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+script = ExtResource("3_cuwna")
+
+[node name="spaceship" type="Node" parent="."]
+
+[node name="kat3" parent="spaceship" instance=ExtResource("3_hmjnl")]
+position = Vector2(-494, 140)
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="main_control" parent="ui" instance=ExtResource("2_dnksk")]
+
+[node name="back" parent="ui" instance=ExtResource("6_rbnps")]

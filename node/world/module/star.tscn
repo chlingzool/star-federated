@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bspchmb3bilv6"]
+
+[ext_resource type="Script" uid="uid://db6qgn7ys8syi" path="res://node/world/module/star.gd" id="1_r73tk"]
+[ext_resource type="Texture2D" uid="uid://bh62stjx6rtyn" path="res://assrt/light/2d_lights_and_shadows_neutral_point_light.webp" id="2_4a21a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j2p8m"]
+friction = 0.1
+rough = true
+bounce = 0.1
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8cbx"]
+resource_local_to_scene = true
+radius = 1454.44
+
+[node name="node" type="StaticBody2D"]
+light_mask = 513
+visibility_layer = 513
+physics_material_override = SubResource("PhysicsMaterial_j2p8m")
+script = ExtResource("1_r73tk")
+radius = 120.0
+metadata/plant_type = ""
+
+[node name="cb_area" type="Area2D" parent="."]
+gravity_space_override = 1
+gravity_point = true
+gravity_point_unit_distance = 2.90888
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 2.90888
+
+[node name="CollisionShape" type="CollisionShape2D" parent="cb_area"]
+shape = SubResource("CircleShape2D_u8cbx")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+
+[node name="polygon" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(120, 0, 119.422, 11.7621, 117.694, 23.4108, 114.833, 34.8342, 110.866, 45.922, 105.831, 56.5676, 99.7764, 66.6684, 92.7613, 76.1272, 84.8528, 84.8528, 76.1272, 92.7613, 66.6684, 99.7764, 56.5676, 105.831, 45.922, 110.866, 34.8342, 114.833, 23.4108, 117.694, 11.7621, 119.422, 7.34764e-15, 120, -11.7621, 119.422, -23.4108, 117.694, -34.8342, 114.833, -45.922, 110.866, -56.5676, 105.831, -66.6684, 99.7764, -76.1272, 92.7613, -84.8528, 84.8528, -92.7613, 76.1272, -99.7764, 66.6684, -105.831, 56.5676, -110.866, 45.922, -114.833, 34.8342, -117.694, 23.4108, -119.422, 11.7621, -120, 1.46953e-14, -119.422, -11.7621, -117.694, -23.4108, -114.833, -34.8342, -110.866, -45.922, -105.831, -56.5676, -99.7764, -66.6684, -92.7613, -76.1272, -84.8528, -84.8528, -76.1272, -92.7613, -66.6684, -99.7764, -56.5676, -105.831, -45.922, -110.866, -34.8342, -114.833, -23.4108, -117.694, -11.7621, -119.422, -2.20429e-14, -120, 11.7621, -119.422, 23.4108, -117.694, 34.8342, -114.833, 45.922, -110.866, 56.5676, -105.831, 66.6684, -99.7764, 76.1272, -92.7613, 84.8528, -84.8528, 92.7613, -76.1272, 99.7764, -66.6684, 105.831, -56.5676, 110.866, -45.922, 114.833, -34.8342, 117.694, -23.4108, 119.422, -11.7621)
+
+[node name="light" type="PointLight2D" parent="."]
+color = Color(1, 0.8, 0.2, 1)
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 8.0
+texture = ExtResource("2_4a21a")
+texture_scale = 15360.0

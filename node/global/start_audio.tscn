@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk6wsx40nxxip"]
+
+[ext_resource type="AudioStream" uid="uid://b6d5aglckauw4" path="res://assrt/music/24.wav" id="1_agdjj"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_agdjj")
+autoplay = true
+mix_target = 1
+bus = &"back_music_bus"

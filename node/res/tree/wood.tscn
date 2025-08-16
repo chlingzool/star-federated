@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dss276jg42lk7"]
+
+[ext_resource type="Texture2D" uid="uid://dqrqiugmcv7gx" path="res://assrt/img/wood.png" id="1_w7cvi"]
+
+[node name="wood" type="RigidBody2D"]
+mass = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_w7cvi")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(7, -22, -18, 1, -17, 9, -20, 14, -15, 20, -8, 17, -1, 22, 21, -11, 13, -15)

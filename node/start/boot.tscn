@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://wkj07ebpq36p"]
+
+[ext_resource type="Script" uid="uid://c5t2kcsw07byv" path="res://node/start/boot_menu.gd" id="1_4d8lq"]
+[ext_resource type="Texture2D" uid="uid://bshrgtnegfyd2" path="res://assrt/icon/letters-dark.png" id="2_ghfvs"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4d8lq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ghfvs")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="load_over" from="." to="." method="_on_load_over"]

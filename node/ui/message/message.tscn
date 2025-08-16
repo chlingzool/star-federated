@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccbo5ssmls5rd"]
+
+[ext_resource type="StyleBox" uid="uid://ds8msxh0n6ckm" path="res://node/ui/message/info.tres" id="1_brbqv"]
+
+[sub_resource type="Theme" id="Theme_wj06p"]
+Label/styles/normal = ExtResource("1_brbqv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_t68e2"]
+
+[sub_resource type="GDScript" id="GDScript_brbqv"]
+script/source = "extends Label
+
+func _on_timer_timeout() -> void:
+	queue_free()
+	$\"../../..\".message_count -= 1
+"
+
+[node name="message" type="Label"]
+custom_minimum_size = Vector2(0, 24)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.5
+offset_right = 275.5
+offset_bottom = 20.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+theme = SubResource("Theme_wj06p")
+label_settings = SubResource("LabelSettings_t68e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_brbqv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
